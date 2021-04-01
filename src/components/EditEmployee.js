@@ -4,9 +4,9 @@ import { useParams, useHistory } from 'react-router-dom';
 import { Toast } from 'react-bootstrap';
 import DataForm from './DataForm';
 const EditEmployee = () => {
+    const { id } = useParams();
     const [employee, setEmployee] = useState({});
     const history = useHistory();
-    const { id } = useParams();
     const [showFailure, setShowFailure] = useState(false);
     useEffect(() => {
         getEmployee(id)
@@ -16,7 +16,7 @@ const EditEmployee = () => {
             .catch((error) => {
                 console.log(error)
             })
-    }, [])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
     const handleChange = (e) => {
         if (e.target.name === "fullName") {
             // checking if the value that is entered in 
