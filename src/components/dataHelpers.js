@@ -1,3 +1,6 @@
+//The functions of axios to perform various
+//API is written at one place so editing is 
+//easy
 import axios from "axios"
 import { API } from "../Endpoints";
 
