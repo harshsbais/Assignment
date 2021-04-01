@@ -36,7 +36,7 @@ const EditEmployee = () => {
             console.log(res);
         }).then(res => {
             console.log("done");
-            setEmployee({});
+            setShowSuccess(true);
         }).catch((err) => {
             console.log(err);
             setShowFailure(true);
@@ -45,12 +45,12 @@ const EditEmployee = () => {
     return (
         <>
             <Toast style={{ float: 'right', position: 'fixed', backgroundColor: '#52af50', color: 'white', zIndex: '1' }} className="custom-toast-success" onClose={() => setShowSuccess(false)} show={showSuccess} delay={3000} autohide>
-                <Toast.Body>Employee Added Successfully</Toast.Body>
+                <Toast.Body>Employee Edited Successfully</Toast.Body>
             </Toast>
             <Toast style={{ float: 'right', position: 'fixed', backgroundColor: '#f34636', color: 'white', zIndex: '1' }} className="custom-toast-failure" onClose={() => setShowFailure(false)} show={showFailure} delay={3000} autohide>
                 <Toast.Body>Failure</Toast.Body>
             </Toast>
-            <DataForm onSubmit={onSubmit} employee={employee} handleChange={handleChange} />
+            <DataForm onSubmit={onSubmit} employee={employee} handleChange={handleChange} actionKey={"Edit"} />
         </>
     )
 };

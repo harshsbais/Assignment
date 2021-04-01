@@ -43,7 +43,7 @@ const AddEmployee = () => {
             {/* Using a single DataForm component to display form in both
             add employee and edit employee component thus reducing
             redundancy */}
-            <DataForm onSubmit={onSubmit} employee={employee} handleChange={handleChange} />
+            <DataForm onSubmit={onSubmit} employee={employee} handleChange={handleChange} actionKey={"Add"} />
         </>
     )
 };

@@ -9,7 +9,7 @@ function DataForm(props) {
             <div className='container center-box'>
                 <div className="w-75 mx-auto shadow p-5">
                     <div className="text-center">
-                        <h1>Add Employee</h1>
+                        <h1>{props.actionKey} Employee</h1>
                     </div>
                     <Form onSubmit={(e) => props.onSubmit(e)}>
                         <Form.Group>
@@ -88,14 +88,14 @@ function DataForm(props) {
                                 onChange={(e) => props.handleChange(e)}
                             />
                         </Form.Group>
-                        <Button type='submit' className="btn btn-primary btn-block" on>Add Employee</Button>
+                        <Button type='submit' className="btn btn-primary btn-block" on>{props.actionKey} Employee</Button>
                     </Form>
                 </div>
             </div >
             <div style={{
                 position: "fixed",
                 top: "10px",
-                left: "30px",
+                right: "30px",
                 color: "#ff394d",
                 fontSize: "35px"
             }}>
