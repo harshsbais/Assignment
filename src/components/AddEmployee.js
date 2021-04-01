@@ -37,7 +37,7 @@ const AddEmployee = () => {
             <Toast style={{ float: 'right', position: 'fixed', backgroundColor: '#52af50', color: 'white', zIndex: '1' }} className="custom-toast-success" onClose={() => setShowSuccess(false)} show={showSuccess} delay={3000} autohide>
                 <Toast.Body>Employee Added Successfully</Toast.Body>
             </Toast>
-            <Toast style={{ float: 'right', position: 'fixed', backgroundColor: '#52af50', color: 'white', zIndex: '1' }} className="custom-toast-failure" onClose={() => setShowFailure(false)} show={showFailure} delay={3000} autohide>
+            <Toast style={{ float: 'right', position: 'fixed', backgroundColor: '#f34636', color: 'white', zIndex: '1' }} className="custom-toast-failure" onClose={() => setShowFailure(false)} show={showFailure} delay={3000} autohide>
                 <Toast.Body>Failure</Toast.Body>
             </Toast>
             {/* Using a single DataForm component to display form in both
