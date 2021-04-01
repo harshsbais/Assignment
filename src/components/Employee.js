@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Button, Popover, OverlayTrigger } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { getEmployees, deleteEmployee } from "./dataHelpers";
 const Employee = (props) => {
     const [employees, setEmployees] = useState([]);
+    const [loading, setLoading] = useState(true);
     const del = (e) => {
         console.log(e)
         deleteEmployee(e);
@@ -21,6 +23,7 @@ const Employee = (props) => {
         getEmployees()
             .then((data) => {
                 setEmployees(data.data);
+                setLoading(false);
             })
             .catch((err) => {
                 console.log(err);
@@ -53,7 +56,7 @@ const Employee = (props) => {
                                     <tbody>
                                         {employees.map((employee, idx) => {
                                             return (
-                                                <tr>
+                                                <tr key={employee.id}>
                                                     <td className="text text-muted">{`${idx + 1}`}</td>
                                                     <td className="text ins-title">{employee.fullName}</td>
                                                     <td className="text ins-content"><img src={employee.avatar} style={{ height: "100px" }} alt={`Avatar of ${employee.fullName}`} /></td>
@@ -85,6 +88,24 @@ const Employee = (props) => {
                                         })}
                                     </tbody>
                                 </table>
+                                {
+                                    loading && <table className="table table-striped table-hover">
+                                        <tbody>
+                                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(el => {
+                                                return <tr>
+                                                    {[1, 2, 3, 4, 5, 6, 7, 8].map(td => {
+                                                        return <td>
+                                                            <SkeletonTheme color="#B4B3B3" highlightColor="#D0D0D0">
+                                                                <Skeleton width={100} />
+                                                            </SkeletonTheme>
+                                                        </td>
+                                                    })}
+                                                </tr>
+                                            })
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
                             </div>
                         </div>
                     </div>
