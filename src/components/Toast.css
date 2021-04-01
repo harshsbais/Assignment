@@ -1,0 +1,15 @@
+.custom-toast-success {
+    position: absolute;
+    color: #fff;
+    background-color: #52af50 !important;
+    top: 10px;
+    right: 30px;
+}
+
+.custom-toast-failure {
+    position: absolute;
+    color: #fff;
+    background-color: #f34636 !important;
+    top: 10px;
+    right: 30px;
+}
