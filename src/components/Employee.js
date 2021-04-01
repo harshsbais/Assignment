@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Button, Popover, OverlayTrigger } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getEmployees, deleteEmployee } from "./dataHelpers";
-import "./Employee.css";
-import './Toast.css';
 const Employee = (props) => {
     const [employees, setEmployees] = useState([]);
     const del = (e) => {
