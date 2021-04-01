@@ -32,7 +32,7 @@ const Employee = (props) => {
             }} onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide>
                 <Toast.Body>Employee Data Deleted Successfully</Toast.Body>
             </Toast>
-            <Button className='btn-primary p-1 mb-3' style={{ width: "50px", height: "50px" }}><Link to='/add'><i class="fa fa-plus" aria-hidden="true" style={{ color: "white" }} /></Link></Button>
+            <Link to='/add'><Button className='btn-primary p-1 mb-3' style={{ width: "50px", height: "50px" }}><i class="fa fa-plus" aria-hidden="true" style={{ color: "white" }} /></Button></Link>
             <div className="app-main__inner">
                 <div className="row">
                     <div className="col-md-12">
@@ -66,7 +66,7 @@ const Employee = (props) => {
                                                     <td className="text ins-content">{(employee.phoneNumber)}</td>
                                                     <td className="text ins-content">{(employee.dob)}</td>
                                                     <td className='text'>
-                                                        <Button variant='success' className='mr-2'><Link to={`/edit/${employee.id}`}><i class="fa fa-pencil-square-o" aria-hidden="true" style={{ color: "white" }}></i></Link></Button>
+                                                        <Link to={`/edit/${employee.id}`}><Button variant='success' className='mr-2'><i class="fa fa-pencil-square-o" aria-hidden="true" style={{ color: "white" }}></i></Button></Link>
                                                         <OverlayTrigger
                                                             trigger="click"
                                                             key={idx}
