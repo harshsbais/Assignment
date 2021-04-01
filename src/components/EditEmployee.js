@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { editEmployee, getEmployee } from "./dataHelpers";
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Toast } from 'react-bootstrap';
 import DataForm from './DataForm';
 const EditEmployee = () => {
     const { id } = useParams();
     const [employee, setEmployee] = useState({});
-    const history = useHistory();
+    const [showSuccess, setShowSuccess] = useState(false);
     const [showFailure, setShowFailure] = useState(false);
     useEffect(() => {
         getEmployee(id)
@@ -36,7 +36,6 @@ const EditEmployee = () => {
             console.log(res);
         }).then(res => {
             console.log("done");
-            history.push("/");
             setEmployee({});
         }).catch((err) => {
             console.log(err);
@@ -45,6 +44,9 @@ const EditEmployee = () => {
     }
     return (
         <>
+            <Toast style={{ float: 'right', position: 'fixed', backgroundColor: '#52af50', color: 'white', zIndex: '1' }} className="custom-toast-success" onClose={() => setShowSuccess(false)} show={showSuccess} delay={3000} autohide>
+                <Toast.Body>Employee Added Successfully</Toast.Body>
+            </Toast>
             <Toast style={{ float: 'right', position: 'fixed', backgroundColor: '#52af50', color: 'white', zIndex: '1' }} className="custom-toast-failure" onClose={() => setShowFailure(false)} show={showFailure} delay={3000} autohide>
                 <Toast.Body>Failure</Toast.Body>
             </Toast>
