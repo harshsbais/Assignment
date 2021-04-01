@@ -1,6 +1,7 @@
 //Form Component to display in AddEmployee & EditEmployee Component
 import React from 'react'
 import { Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 function DataForm(props) {
     const { avatar, address, phoneNumber, dob, email, fullName } = props.employee;
     return (
@@ -91,6 +92,17 @@ function DataForm(props) {
                     </Form>
                 </div>
             </div >
+            <div style={{
+                position: "fixed",
+                top: "10px",
+                left: "30px",
+                color: "#ff394d",
+                fontSize: "35px"
+            }}>
+                <Link to="/">
+                    <i className="fa fa-times"></i>
+                </Link>
+            </div>
         </div>
     )
 }
