@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Button, Popover, OverlayTrigger } from "react-bootstrap";
+import { Button, Popover, OverlayTrigger, Toast } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { getEmployees, deleteEmployee } from "./dataHelpers";
 const Employee = (props) => {
     const [employees, setEmployees] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [showToast, setShowToast] = useState(false);
     const del = (e) => {
         console.log(e)
         deleteEmployee(e);
+        setShowToast(true);
         document.body.click();
         let result = employees.filter(employee => employee.id !== e);
         setEmployees(result);
@@ -25,6 +27,11 @@ const Employee = (props) => {
     }, []);
     return (
         <>
+            <Toast style={{
+                float: 'right', position: 'fixed', backgroundColor: '#52af50', color: 'white', zIndex: '1'
+            }} onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide>
+                <Toast.Body>Employee Data Deleted Successfully</Toast.Body>
+            </Toast>
             <Button className='btn-primary p-1 mb-3' style={{ width: "50px", height: "50px" }}><Link to='/add'><i class="fa fa-plus" aria-hidden="true" style={{ color: "white" }} /></Link></Button>
             <div className="app-main__inner">
                 <div className="row">
