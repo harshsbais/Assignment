@@ -1,3 +1,4 @@
+//Form Component to display in AddEmployee & EditEmployee Component
 import React from 'react'
 import { Form, Button } from 'react-bootstrap';
 function DataForm(props) {
@@ -33,6 +34,9 @@ function DataForm(props) {
                                 value={avatar ?? ""}
                                 onChange={(e) => props.handleChange(e)}
                             />
+                            {/* checking if the url entered is of image or not
+                            if the url entered is of an image then the 
+                            image is displayed otherwise not */}
                             <center><img src={avatar} alt="Avatar" style={{ height: "400px", marginTop: "10px", display: (avatar ?? "").match(/^http.*\.(jpeg|jpg|gif|png)$/) ? '' : 'none' }} /></center>
                         </Form.Group>
                         <Form.Group>

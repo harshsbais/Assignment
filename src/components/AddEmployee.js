@@ -7,9 +7,12 @@ const AddEmployee = () => {
     const [showSuccess, setShowSuccess] = useState(false);
     const [showFailure, setShowFailure] = useState(false);
     const handleChange = (e) => {
-        let check = e.target.value;
         if (e.target.name === "fullName") {
-            if (check.match(/^[a-zA-Z ]*$/) !== null)
+            // checking if the value that is entered in 
+            // the text box matches with the given 
+            // soecification that name should not contain
+            // any special character
+            if (e.target.value.match(/^[a-zA-Z ]*$/) !== null)
                 setEmployee({ ...employee, [e.target.name]: e.target.value })
         }
         else
@@ -35,8 +38,11 @@ const AddEmployee = () => {
                 <Toast.Body>Employee Added Successfully</Toast.Body>
             </Toast>
             <Toast style={{ float: 'right', position: 'fixed', backgroundColor: '#52af50', color: 'white', zIndex: '1' }} className="custom-toast-failure" onClose={() => setShowFailure(false)} show={showFailure} delay={3000} autohide>
-                <Toast.Body>Failure Response</Toast.Body>
+                <Toast.Body>Failure</Toast.Body>
             </Toast>
+            {/* Using a single DataForm component to display form in both
+            add employee and edit employee component thus reducing
+            redundancy */}
             <DataForm onSubmit={onSubmit} employee={employee} handleChange={handleChange} />
         </>
     )
