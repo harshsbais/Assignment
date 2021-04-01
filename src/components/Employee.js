@@ -51,7 +51,8 @@ const Employee = (props) => {
                                             <th className="text-center">Address</th>
                                             <th className="text-center">Phone Number</th>
                                             <th className="text-center">DOB</th>
-                                            <th className="text-center">Action</th>
+                                            <th className="text-center">Edit</th>
+                                            <th className="text-center">Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -65,8 +66,8 @@ const Employee = (props) => {
                                                     <td className="text ins-content">{(employee.address)}</td>
                                                     <td className="text ins-content">{(employee.phoneNumber)}</td>
                                                     <td className="text ins-content">{(employee.dob)}</td>
-                                                    <td className='text'>
-                                                        <Link to={`/edit/${employee.id}`}><Button variant='success' className='mr-2'><i class="fa fa-pencil-square-o" aria-hidden="true" style={{ color: "white" }}></i></Button></Link>
+                                                    <td className="text ins-content"><Link to={`/edit/${employee.id}`}><Button variant='success' className='mr-2'><i class="fa fa-pencil-square-o" aria-hidden="true" style={{ color: "white" }}></i></Button></Link></td>
+                                                    <td className='text ins-content'>
                                                         <OverlayTrigger
                                                             trigger="click"
                                                             key={idx}
@@ -94,7 +95,7 @@ const Employee = (props) => {
                                         <tbody>
                                             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(el => {
                                                 return <tr>
-                                                    {[1, 2, 3, 4, 5, 6, 7, 8].map(td => {
+                                                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(td => {
                                                         return <td>
                                                             <SkeletonTheme color="#B4B3B3" highlightColor="#D0D0D0">
                                                                 <Skeleton width={100} />
