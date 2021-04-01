@@ -23,6 +23,6 @@ export const getEmployee = async (uuid) => {
 }
 
 export const editEmployee = async (body, uuid) => {
-    const response = await axios.patch(API._employee + uuid + '/', body);
+    const response = await axios.put(API._employee + uuid + '/', body);
     return response;
 }
