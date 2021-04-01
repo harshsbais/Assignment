@@ -11,7 +11,7 @@ const Employee = (props) => {
         document.body.click();
         let ins = [];
         for (let i = 0; i < employees.length; i++) {
-            if (employees[i].uuid === e)
+            if (employees[i].id === e)
                 continue;
             ins.push(employees[i]);
             console.log(employees[i])
@@ -73,7 +73,7 @@ const Employee = (props) => {
                                                                 <Popover id={`popover-positioned-${idx}`}>
                                                                     <Popover.Title as="h3">Are you sure ?</Popover.Title>
                                                                     <Popover.Content>
-                                                                        <Button variant="warning" onClick={e => { del(employee.uuid) }}>Confirm Delete</Button>
+                                                                        <Button variant="warning" onClick={e => { del(employee.id) }}>Confirm Delete</Button>
                                                                     </Popover.Content>
                                                                 </Popover>
                                                             }

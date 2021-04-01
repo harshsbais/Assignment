@@ -18,16 +18,16 @@ const AddEmployee = () => {
     const onSubmit = async e => {
         e.preventDefault();
         console.log(employee);
-        // await addPayment(payment).then(async res => {
-        //     console.log(res);
-        // }).then(res => {
-        //     console.log("done");
-        //     setShowSuccess(true);
-        //     setPayment({ name: '', duration: '', price: '' })
-        // }).catch((err) => {
-        //     console.log(err)
-        //     setShowFailure(true);
-        // })
+        await addEmployee(employee).then(async res => {
+            console.log(res);
+        }).then(res => {
+            console.log("done");
+            setShowSuccess(true);
+            setEmployee({});
+        }).catch((err) => {
+            console.log(err);
+            setShowFailure(true);
+        })
     }
     return (
         <>
@@ -51,7 +51,7 @@ const AddEmployee = () => {
                                 className="form-control form-control-lg"
                                 placeholder="Enter Name"
                                 name="fullName"
-                                value={fullName}
+                                value={fullName ?? ""}
                                 onChange={(e) => handleChange(e)}
                             />
                         </Form.Group>
@@ -63,7 +63,7 @@ const AddEmployee = () => {
                                 className="form-control form-control-lg"
                                 placeholder="Enter Avatar"
                                 name="avatar"
-                                value={avatar}
+                                value={avatar ?? ""}
                                 onChange={(e) => handleChange(e)}
                             />
                             <center><img src={avatar} alt="Avatar" style={{ height: "400px", marginTop: "10px", display: (avatar ?? "").match(/^http.*\.(jpeg|jpg|gif|png)$/) ? '' : 'none' }} /></center>
@@ -76,7 +76,7 @@ const AddEmployee = () => {
                                 className="form-control form-control-lg"
                                 placeholder="Enter Email"
                                 name="email"
-                                value={email}
+                                value={email ?? ""}
                                 onChange={(e) => handleChange(e)}
                             />
                         </Form.Group>
@@ -88,7 +88,7 @@ const AddEmployee = () => {
                                 className="form-control form-control-lg"
                                 placeholder="Enter Address"
                                 name="address"
-                                value={address}
+                                value={address ?? ""}
                                 onChange={(e) => handleChange(e)}
                             />
                         </Form.Group>
@@ -100,7 +100,7 @@ const AddEmployee = () => {
                                 className="form-control form-control-lg"
                                 placeholder="Enter Phone Number"
                                 name="phoneNumber"
-                                value={phoneNumber}
+                                value={phoneNumber ?? ""}
                                 onChange={(e) => handleChange(e)}
                             />
                         </Form.Group>
@@ -112,7 +112,7 @@ const AddEmployee = () => {
                                 className="form-control form-control-lg"
                                 placeholder="Enter Date of Birth"
                                 name="dob"
-                                value={dob}
+                                value={dob ?? ""}
                                 onChange={(e) => handleChange(e)}
                             />
                         </Form.Group>
