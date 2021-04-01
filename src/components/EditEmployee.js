@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { editEmployee, getEmployee } from "./dataHelpers";
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { Form, Button, Toast } from 'react-bootstrap';
 const EditEmployee = () => {
     const [employee, setEmployee] = useState({});
+    const history = useHistory();
     const { id } = useParams();
     const { avatar, address, phoneNumber, dob, email, fullName } = employee;
-    const [showSuccess, setShowSuccess] = useState(false);
     const [showFailure, setShowFailure] = useState(false);
     useEffect(() => {
         getEmployee(id)
@@ -33,7 +33,7 @@ const EditEmployee = () => {
             console.log(res);
         }).then(res => {
             console.log("done");
-            setShowSuccess(true);
+            history.push("/");
             setEmployee({});
         }).catch((err) => {
             console.log(err);
@@ -42,9 +42,6 @@ const EditEmployee = () => {
     }
     return (
         <>
-            <Toast className="custom-toast-success" onClose={() => setShowSuccess(false)} show={showSuccess} delay={3000} autohide>
-                <Toast.Body>Success</Toast.Body>
-            </Toast>
             <Toast className="custom-toast-failure" onClose={() => setShowFailure(false)} show={showFailure} delay={3000} autohide>
                 <Toast.Body>Failure</Toast.Body>
             </Toast>
