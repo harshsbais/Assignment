@@ -10,14 +10,8 @@ const Employee = (props) => {
         console.log(e)
         deleteEmployee(e);
         document.body.click();
-        let ins = [];
-        for (let i = 0; i < employees.length; i++) {
-            if (employees[i].id === e)
-                continue;
-            ins.push(employees[i]);
-            console.log(employees[i])
-        }
-        setEmployees(ins);
+        let result = employees.filter(employee => employee.id !== e);
+        setEmployees(result);
     }
     useEffect(() => {
         getEmployees()
