@@ -3,11 +3,17 @@ import { addEmployee } from "./dataHelpers";
 import { Form, Button, Toast } from 'react-bootstrap';
 const AddEmployee = () => {
     const [employee, setEmployee] = useState({});
-    const { name, avatar, address, phoneNumber, dob, email } = employee;
+    const { avatar, address, phoneNumber, dob, email, fullName } = employee;
     const [showSuccess, setShowSuccess] = useState(false);
     const [showFailure, setShowFailure] = useState(false);
     const handleChange = (e) => {
-        setEmployee({ ...employee, [e.target.name]: e.target.value })
+        let check = e.target.value;
+        if (e.target.name === "fullName") {
+            if (check.match(/^[a-zA-Z ]*$/) !== null)
+                setEmployee({ ...employee, [e.target.name]: e.target.value })
+        }
+        else
+            setEmployee({ ...employee, [e.target.name]: e.target.value })
     }
     const onSubmit = async e => {
         e.preventDefault();
@@ -44,8 +50,8 @@ const AddEmployee = () => {
                                 required
                                 className="form-control form-control-lg"
                                 placeholder="Enter Name"
-                                name="name"
-                                value={name}
+                                name="fullName"
+                                value={fullName}
                                 onChange={(e) => handleChange(e)}
                             />
                         </Form.Group>
@@ -60,7 +66,19 @@ const AddEmployee = () => {
                                 value={avatar}
                                 onChange={(e) => handleChange(e)}
                             />
-                            <center><img src={avatar} alt="Avatar" style={{ height: "400px", marginTop: "10px", display: avatar.match(/^http.*\.(jpeg|jpg|gif|png)$/) ? '' : 'none' }} /></center>
+                            <center><img src={avatar} alt="Avatar" style={{ height: "400px", marginTop: "10px", display: (avatar ?? "").match(/^http.*\.(jpeg|jpg|gif|png)$/) ? '' : 'none' }} /></center>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className="que-form-label">Email</Form.Label>
+                            <input
+                                required
+                                type="email"
+                                className="form-control form-control-lg"
+                                placeholder="Enter Email"
+                                name="email"
+                                value={email}
+                                onChange={(e) => handleChange(e)}
+                            />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className="que-form-label">Address</Form.Label>
@@ -95,18 +113,6 @@ const AddEmployee = () => {
                                 placeholder="Enter Date of Birth"
                                 name="dob"
                                 value={dob}
-                                onChange={(e) => handleChange(e)}
-                            />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label className="que-form-label">Email</Form.Label>
-                            <input
-                                required
-                                type="email"
-                                className="form-control form-control-lg"
-                                placeholder="Enter Email"
-                                name="email"
-                                value={email}
                                 onChange={(e) => handleChange(e)}
                             />
                         </Form.Group>
