@@ -35,10 +35,7 @@ function DataForm(props) {
                                 value={avatar ?? ""}
                                 onChange={(e) => props.handleChange(e)}
                             />
-                            {/* checking if the url entered is of image or not
-                            if the url entered is of an image then the 
-                            image is displayed otherwise not */}
-                            <center><img src={avatar} alt="Avatar" style={{ height: "400px", marginTop: "10px", display: (avatar ?? "").match(/^http.*\.(jpeg|jpg|gif|png|cms|raw|bmp|psd)$/) ? '' : 'none' }} /></center>
+                            <center><img src={avatar} alt="Avatar" style={{ height: "400px", marginTop: "10px" }} /></center>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className="que-form-label">Email</Form.Label>
