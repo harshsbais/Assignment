@@ -68,7 +68,7 @@ function DataForm(props) {
                             <Form.Label className="que-form-label">Phone Number</Form.Label>
                             <input
                                 required
-                                type="number"
+                                type="text"
                                 className="form-control form-control-lg"
                                 placeholder="Enter Phone Number"
                                 name="phoneNumber"

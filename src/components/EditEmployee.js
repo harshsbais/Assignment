@@ -26,6 +26,14 @@ const EditEmployee = () => {
             if (e.target.value.match(/^[a-zA-Z ]*$/) !== null)
                 setEmployee({ ...employee, [e.target.name]: e.target.value })
         }
+        else if (e.target.name === "phoneNumber") {
+            // checking if the value that is entered in 
+            // the text box matches with the given 
+            // soecification that phone number should not contain
+            // any character except numbers 
+            if (e.target.value.match(/^[0-9]*$/) !== null)
+                setEmployee({ ...employee, [e.target.name]: e.target.value })
+        }
         else
             setEmployee({ ...employee, [e.target.name]: e.target.value })
     }
